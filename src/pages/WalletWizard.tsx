@@ -2,8 +2,8 @@ import React from 'react';
 import { ethers } from 'ethers';
 import { Button, Code, FileButton, Group, Modal, Table, Title } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { DefaultLayout } from '../components/Layouts';
 import { notifications } from '@mantine/notifications';
+import { DefaultLayout } from '../components/Layouts';
 
 const WalletWizardPage: React.FC = () => {
   const [wallet, setWallet] = React.useState<ethers.Wallet | ethers.HDNodeWallet | null>(null);
@@ -24,6 +24,8 @@ const WalletWizardPage: React.FC = () => {
     body: [
       ['Address', <Code>{w.address}</Code>],
       ['Private key', <Code>{w.privateKey}</Code>],
+      // TODO: remove ts-ignore here
+      // @ts-ignore
       ['Mnemonic', <Code>{w?.mnemonic?.phrase}</Code>],
     ],
   });
